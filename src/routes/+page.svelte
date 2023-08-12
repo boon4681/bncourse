@@ -33,7 +33,7 @@
     <h3
         on:click={(e) => {
             e.preventDefault();
-            path = path.split("/").slice(0, -1).join("/");
+            path = path.replace(/\//g,"/").split("/").slice(0, -1).join("/");
             get();
         }}
     >
@@ -73,7 +73,7 @@
                                 }, 300);
                             }
                             navigator.clipboard
-                                .writeText(window.location.origin + "/assets/" + dir.relative)
+                                .writeText(window.location.origin + "/assets/" + dir.relative.replace(/\//g,"/"))
                                 .then(
                                     function () {
                                         console.log(
